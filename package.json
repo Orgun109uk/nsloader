@@ -1,0 +1,22 @@
+{
+    "name": "ns-loader",
+    "description": "",
+    "version": "1.0.0",
+    "author": "Orgun109uk <orgun109uk@gmail.com> (http://my-site.com/)",
+    "engines": {
+        "npm": "~1.0.20"
+    },
+    "private": true,
+    "devDependencies": {
+        "grunt-cli": "^0.1.13",
+        "grunt-contrib-jshint": "^0.10.0",
+        "grunt-simple-mocha": "*",
+        "should": "*"
+    },
+    "dependencies": {
+        "underscore": "1.7.0"
+    },
+    "scripts": {
+        "test": "grunt"
+    }
+}
