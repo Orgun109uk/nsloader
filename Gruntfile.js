@@ -1,34 +1,37 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
-    grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
+  'use strict';
 
-        // jsHint configuration.
-        jshint: {
-            files: [ 'Gruntfile.js', 'index.js', 'lib/*.js', 'tests/*.js' ],
-            options: {
-                maxlen: 80,
-                quotmark: 'single'
-            }
-        },
+  var jsFiles = ['Gruntfile.js', 'index.js', 'lib/*.js'];
 
-        // Simple Mocha configuration.
-        simplemocha: {
-            options: {
-                globals: [ 'expect' ],
-                timeout: 3000,
-                ignoreLeaks: false,
-                ui: 'bdd',
-                reporter: 'tap'
-            },
-            all: {
-                src: [ 'tests/*.js' ]
-            }
-        }
-    });
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
 
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-simple-mocha');
+    // jsHint configuration.
+    jshint: {
+      files: jsFiles
+    },
 
-    grunt.registerTask('default', [ 'jshint', 'simplemocha' ]);
+    eslint: {
+      target: jsFiles
+    },
+
+    // Simple Mocha configuration.
+    simplemocha: {
+      options: {
+        globals: ['expect'],
+        timeout: 3000,
+        ignoreLeaks: false
+      },
+      all: {
+        src: ['tests/*.js']
+      }
+    }
+  });
+
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-eslint');
+  grunt.loadNpmTasks('grunt-simple-mocha');
+
+  grunt.registerTask('default', ['jshint', 'eslint', 'simplemocha']);
 };
