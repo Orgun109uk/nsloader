@@ -2,7 +2,7 @@ module.exports = function (grunt) {
 
   'use strict';
 
-  var jsFiles = ['Gruntfile.js', 'index.js', 'lib/*.js'];
+  var jsFiles = ['Gruntfile.js', 'index.js', 'src/*.js'];
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
