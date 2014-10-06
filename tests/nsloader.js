@@ -1,6 +1,6 @@
 var assert = require('assert'),
     path = require('path'),
-    loader = require('../lib/nsloader');
+    loader = require('../src/nsloader');
 
 describe('nsLoader', function () {
 
