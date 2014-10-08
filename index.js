@@ -1,1 +1,1 @@
-exports = module.exports = require('src/nsloader');
+exports = module.exports = require('./src/nsloader');
