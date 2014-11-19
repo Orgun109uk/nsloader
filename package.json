@@ -1,8 +1,19 @@
 {
   "name": "nsloader",
   "description": "A simple namespace loader.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "orgun109uk <orgun109uk@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "namespace", "loader", "require"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Orgun109uk/nsloader"
+  },
+  "bugs": {
+    "url": "https://github.com/Orgun109uk/nsloader/issues"
+  },
   "engines": {
     "node": "~0.10.30",
     "npm": "~1.4.21"

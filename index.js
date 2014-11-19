@@ -1,3 +1,9 @@
+/**
+ * Namespace loader
+ *
+ * Copyright (c) 2014 Orgun109uk
+ */
+
 var nsloaderRegisterdNamespaces = {},
     nsloaderLoadedNamespaces = {};
 
