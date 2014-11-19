@@ -1,8 +1,8 @@
 {
-  "name": "jsscms-nsloader",
+  "name": "nsloader",
   "description": "A simple namespace loader.",
   "version": "0.1.1",
-  "author": "Orgun109uk <orgun109uk@gmail.com> (http://my-site.com/)",
+  "author": "orgun109uk <orgun109uk@gmail.com>",
   "engines": {
     "node": "~0.10.30",
     "npm": "~1.4.21"

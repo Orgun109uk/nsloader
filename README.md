@@ -1,10 +1,34 @@
 # nsLoader - Node.js namespace loader
 
-nsLoader is a small utility that allows registering wildcard namespaces.
+nsloader is a small utility that allows using namespaces for requires.
+
+### Installation
+```sh
+$ npm install nsloader
+```
+
+### Usage
+```js
+var loader = require('nsloader');
+
+loader.register('mymodule/*', function (ns) {
+  var filename = path.join(__dirname, ns.substr('mymodule/'.length));
+  return fs.existsSync(filename) ? filename : false;
+});
+```
+Then the equivilant of:
+```js
+var something = require('./lib/something');
+var something = require('../../../lib/something');
+var something = require('./something');
+```
+would be:
+```js
+var something = loader.require('mymodule/lib/something');
+```
 
 ## Testing
-To run the Mocha tests, execute 'npm test'.
-
-## Change log
-* 0.1.0
-  - Initial commit.
+A mocha test suite has been provided and can be run by:
+```sh
+$ npm test
+```
