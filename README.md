@@ -33,7 +33,8 @@ would be:
 var something = loader.require('mymodule/lib/something');
 ```
 
-A real world example would be:
+## Example
+A real world example could be:
 ```js
 var path = require('path'),
     fs = require('fs'),
