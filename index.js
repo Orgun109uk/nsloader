@@ -1,7 +1,8 @@
 /**
- * Namespace loader
+ * Namespace loader.
  *
- * Copyright (c) 2014 Orgun109uk
+ * @module nsloader
+ * @copyright Copyright (c) 2014 Orgun109uk
  */
 
 var nsloaderRegisterdNamespaces = {},
@@ -10,13 +11,10 @@ var nsloaderRegisterdNamespaces = {},
 /**
  * Determines if a namespace has been registered.
  *
- * @param string ns
- *   The namespace.
- *
- * @return boolean
- *   Returns TRUE or FALSE.
+ * @param {String} ns The namespace.
+ * @return {Boolean} Returns TRUE or FALSE.
  */
-function nsloaderRegistered (ns) {
+function nsloaderRegistered(ns) {
   'use strict';
 
   return nsloaderRegisterdNamespaces[ns] !== undefined;
@@ -25,14 +23,10 @@ function nsloaderRegistered (ns) {
 /**
  * Register a new namespace.
  *
- * @param string ns
- *   The namespace.
- * @param string|closure target
- *   Either a filename, or a callback.
- *
- * @return void
+ * @param {String} ns The namespace.
+ * @param {String|Function} target Either a filename, or a callback.
  */
-function nsloaderRegister (ns, target) {
+function nsloaderRegister(ns, target) {
   'use strict';
 
   if (typeof target === 'function' || typeof target === 'string') {
@@ -43,12 +37,9 @@ function nsloaderRegister (ns, target) {
 /**
  * Unregister an existing namespace.
  *
- * @param string ns
- *   The namespace.
- *
- * @return void
+ * @param {String} ns The namespace.
  */
-function nsloaderUnregister (ns) {
+function nsloaderUnregister(ns) {
   'use strict';
 
   if (nsloaderRegisterdNamespaces[ns] !== undefined) {
@@ -59,13 +50,10 @@ function nsloaderUnregister (ns) {
 /**
  * Attempt to convert namespace to a matching /* namespace.
  *
- * @param string ns
- *   The namespace.
- *
- * @return boolean|string
- *   The converted namespace or FALSE.
+ * @param {String} ns The namespace.
+ * @return {Boolean|String} The converted namespace or FALSE.
  */
-function nsloaderFindNamespace (ns) {
+function nsloaderFindNamespace(ns) {
   'use strict';
 
   var newNs = '', found = false, nsp, i, len;
@@ -88,13 +76,11 @@ function nsloaderFindNamespace (ns) {
 /**
  * Run a namespace callback.
  *
- * @param string ns
- *   The namespace.
- *
- * @return boolean|string
- *   Returns either the filename of the namespace or FALSE.
+ * @param {String} ns The namespace.
+ * @return {Boolean|String} Returns either the filename of the namespace or
+ *   FALSE.
  */
-function nsloaderNamespace (ns) {
+function nsloaderNamespace(ns) {
   'use strict';
 
   var newNs = nsloaderRegisterdNamespaces[ns] !== undefined ?
@@ -119,15 +105,11 @@ function nsloaderNamespace (ns) {
 /**
  * Attempt to load the namespace.
  *
- * @param string ns
- *   The namespace.
- *
- * @return mixed
- *   Returns the result of the require.
- *
- * @throws Error Throws an error if the namespace couldn't be loaded.
+ * @param {String} ns The namespace.
+ * @return {Mixed} Returns the result of the require.
+ * @throws {Error} Throws an error if the namespace couldn't be loaded.
  */
-function nsloaderRequire (ns) {
+function nsloaderRequire(ns) {
   'use strict';
 
   if (nsloaderLoadedNamespaces[ns] === undefined) {
@@ -147,23 +129,19 @@ function nsloaderRequire (ns) {
 /**
  * Determine if a given namespace has been loaded.
  *
- * @param string ns
- *   The namespace.
- *
- * @return boolean
- *   Returns TRUE or FALSE.
+ * @param {String} ns The namespace.
+ * @return {Boolean} Returns TRUE or FALSE.
  */
-function nsloaderLoaded (ns) {
+function nsloaderLoaded(ns) {
   'use strict';
 
   return nsloaderLoadedNamespaces[ns] !== undefined;
 }
 
-exports = module.exports = {
-  registered: nsloaderRegistered,
-  register: nsloaderRegister,
-  unregister: nsloaderUnregister,
-  namespace: nsloaderNamespace,
-  require: nsloaderRequire,
-  loaded: nsloaderLoaded
-};
+exports = module.exports = nsloaderRequire;
+module.exports.registered = nsloaderRegistered;
+module.exports.register = nsloaderRegister;
+module.exports.unregister = nsloaderUnregister;
+module.exports.namespace = nsloaderNamespace;
+module.exports.require = nsloaderRequire;
+module.exports.loaded = nsloaderLoaded;
