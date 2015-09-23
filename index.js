@@ -56,17 +56,20 @@ function nsloaderUnregister(ns) {
 function nsloaderFindNamespace(ns) {
   'use strict';
 
-  var newNs = '', found = false, nsp, i, len;
+  var newNs = '', found = false, nsp = ns.split('/'), i, len;
   if (nsloaderRegisterdNamespaces[ns] === undefined) {
-    nsp = ns.split('/');
     len = nsp.length;
     for (i = 0; i < len; i++) {
-      newNs += nsp[i] + '/';
-
-      if (nsloaderRegisterdNamespaces[newNs + '*'] !== undefined) {
-        found = newNs + '*';
+      newNs = nsp.join('/');
+      if (nsloaderRegisterdNamespaces[newNs] !== undefined) {
+        found = newNs;
+        break;
+      } else if (nsloaderRegisterdNamespaces[newNs + '/*'] !== undefined) {
+        found = newNs + '/*';
         break;
       }
+
+      nsp.pop();
     }
   }
 
