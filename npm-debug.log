@@ -1,0 +1,105 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/ubuntu/.nvm/v0.10.35/bin/node',
+1 verbose cli   '/home/ubuntu/.nvm/v0.10.35/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.35
+4 verbose publish [ '.' ]
+5 verbose cache add [ '.', null ]
+6 verbose cache add name=undefined spec="." args=[".",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: '.',
+7 verbose parsed url   path: '.',
+7 verbose parsed url   href: '.' }
+8 silly lockFile 3a52ce78- .
+9 verbose lock . /home/ubuntu/.npm/3a52ce78-.lock
+10 verbose tar pack [ '/home/ubuntu/.npm/nsloader/0.1.5/package.tgz', '.' ]
+11 verbose tarball /home/ubuntu/.npm/nsloader/0.1.5/package.tgz
+12 verbose folder .
+13 info prepublish nsloader@0.1.5
+14 silly lockFile 1f1177db-tar tar://.
+15 verbose lock tar://. /home/ubuntu/.npm/1f1177db-tar.lock
+16 silly lockFile 7995caba-u-npm-nsloader-0-1-5-package-tgz tar:///home/ubuntu/.npm/nsloader/0.1.5/package.tgz
+17 verbose lock tar:///home/ubuntu/.npm/nsloader/0.1.5/package.tgz /home/ubuntu/.npm/7995caba-u-npm-nsloader-0-1-5-package-tgz.lock
+18 silly lockFile 1f1177db-tar tar://.
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile 7995caba-u-npm-nsloader-0-1-5-package-tgz tar:///home/ubuntu/.npm/nsloader/0.1.5/package.tgz
+21 silly lockFile 7995caba-u-npm-nsloader-0-1-5-package-tgz tar:///home/ubuntu/.npm/nsloader/0.1.5/package.tgz
+22 silly lockFile a2b759dd-buntu-npm-nsloader-0-1-5-package /home/ubuntu/.npm/nsloader/0.1.5/package
+23 verbose lock /home/ubuntu/.npm/nsloader/0.1.5/package /home/ubuntu/.npm/a2b759dd-buntu-npm-nsloader-0-1-5-package.lock
+24 silly lockFile a2b759dd-buntu-npm-nsloader-0-1-5-package /home/ubuntu/.npm/nsloader/0.1.5/package
+25 silly lockFile a2b759dd-buntu-npm-nsloader-0-1-5-package /home/ubuntu/.npm/nsloader/0.1.5/package
+26 silly lockFile 3a52ce78- .
+27 silly lockFile 3a52ce78- .
+28 silly publish { name: 'nsloader',
+28 silly publish   description: 'A simple namespace loader.',
+28 silly publish   version: '0.1.5',
+28 silly publish   author: { name: 'orgun109uk', email: 'orgun109uk@gmail.com' },
+28 silly publish   license: 'MIT',
+28 silly publish   keywords: [ 'namespace', 'loader', 'require' ],
+28 silly publish   repository: { type: 'git', url: 'https://github.com/Orgun109uk/nsloader' },
+28 silly publish   bugs: { url: 'https://github.com/Orgun109uk/nsloader/issues' },
+28 silly publish   engines: { node: '~0.10.30', npm: '~1.4.21' },
+28 silly publish   devDependencies:
+28 silly publish    { 'grunt-cli': '*',
+28 silly publish      'grunt-contrib-jshint': '*',
+28 silly publish      'grunt-eslint': '*',
+28 silly publish      'grunt-simple-mocha': '*' },
+28 silly publish   scripts: { test: 'grunt' },
+28 silly publish   readme: '[![Build Status](https://travis-ci.org/Orgun109uk/nsloader.svg)](https://travis-ci.org/Orgun109uk/nsloader)\n[![Build Status](https://david-dm.org/orgun109uk/nsloader.png)](https://david-dm.org/orgun109uk/nsloader)\n[![npm version](https://badge.fury.io/js/nsloader.svg)](http://badge.fury.io/js/nsloader)\n\n[![NPM](https://nodei.co/npm/nsloader.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/nsloader/)\n\n# nsLoader - Node.js namespace loader\n\nnsloader is a small utility that allows using namespaces for requires.\n\n### Installation\n```sh\n$ npm install nsloader\n```\n\n### Usage\n```js\nvar loader = require(\'nsloader\');\n\nloader.register(\'mymodule/*\', function (ns) {\n  var filename = path.join(__dirname, ns.substr(\'mymodule/\'.length));\n  return fs.existsSync(filename) ? filename : false;\n});\n```\nThen the equivilant of:\n```js\nvar something = require(\'./lib/something\');\nvar something = require(\'../../../lib/something\');\nvar something = require(\'./something\');\n```\nwould be:\n```js\nvar something = loader.require(\'mymodule/lib/something\');\n```\n\n## Example\nA real world example could be:\n```js\nvar path = require(\'path\'),\n    fs = require(\'fs\'),\n    loader = require(\'nsloader\');\n\n// Allow access to the mymodule index file.\nloader.register(\'mymodule\', function () {\n  \'use strict\';\n\n  return path.resolve(path.join(__dirname, \'../index.js\'));\n});\n\n// Allow access to anything after \'mymodule\'.\nloader.register(\'mymodule/*\', function (ns) {\n  \'use strict\';\n\n  var filename = path.join(__dirname, ns.substring(7));\n  if (fs.existsSync(filename + \'.js\')) {\n    return filename + \'.js\';\n  } else if (fs.existsSync(path.join(filename, \'index.js\'))) {\n    return path.join(filename, \'index.js\');\n  }\n\n  return false;\n});\n```\n\n## Testing\nA mocha test suite has been provided and can be run by:\n```sh\n$ npm test\n```\n',
+28 silly publish   readmeFilename: 'README.md',
+28 silly publish   gitHead: 'ad14deaaf53d64b1e2b820dba03e67b4be6ef9b9',
+28 silly publish   homepage: 'https://github.com/Orgun109uk/nsloader',
+28 silly publish   _id: 'nsloader@0.1.5',
+28 silly publish   _shasum: 'be0addcbb147b380f57973048509a4db728625dd',
+28 silly publish   _from: '.' }
+29 verbose request where is /nsloader
+30 verbose request registry https://registry.npmjs.org/
+31 verbose request id b0cc543a37146146
+32 verbose url raw /nsloader
+33 verbose url resolving [ 'https://registry.npmjs.org/', './nsloader' ]
+34 verbose url resolved https://registry.npmjs.org/nsloader
+35 verbose request where is https://registry.npmjs.org/nsloader
+36 info trying registry request attempt 1 at 08:09:55
+37 http PUT https://registry.npmjs.org/nsloader
+38 http 403 https://registry.npmjs.org/nsloader
+39 verbose headers { 'content-type': 'application/json',
+39 verbose headers   'cache-control': 'max-age=60',
+39 verbose headers   'content-length': '95',
+39 verbose headers   'accept-ranges': 'bytes',
+39 verbose headers   date: 'Wed, 23 Sep 2015 08:09:57 GMT',
+39 verbose headers   via: '1.1 varnish',
+39 verbose headers   connection: 'keep-alive',
+39 verbose headers   'x-served-by': 'cache-ams4125-AMS',
+39 verbose headers   'x-cache': 'MISS',
+39 verbose headers   'x-cache-hits': '0',
+39 verbose headers   'x-timer': 'S1442995795.774327,VS0,VE1326' }
+40 error publish Failed PUT 403
+41 error Error: "You cannot publish over the previously published version 0.1.5." : nsloader
+41 error     at RegClient.<anonymous> (/home/ubuntu/.nvm/v0.10.35/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:308:14)
+41 error     at Request._callback (/home/ubuntu/.nvm/v0.10.35/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:246:65)
+41 error     at Request.self.callback (/home/ubuntu/.nvm/v0.10.35/lib/node_modules/npm/node_modules/request/request.js:236:22)
+41 error     at Request.emit (events.js:98:17)
+41 error     at Request.<anonymous> (/home/ubuntu/.nvm/v0.10.35/lib/node_modules/npm/node_modules/request/request.js:1142:14)
+41 error     at Request.emit (events.js:117:20)
+41 error     at IncomingMessage.<anonymous> (/home/ubuntu/.nvm/v0.10.35/lib/node_modules/npm/node_modules/request/request.js:1096:12)
+41 error     at IncomingMessage.emit (events.js:117:20)
+41 error     at _stream_readable.js:944:16
+41 error     at process._tickCallback (node.js:442:13)
+42 error If you need help, you may report this *entire* log,
+42 error including the npm and node versions, at:
+42 error     <http://github.com/npm/npm/issues>
+43 error System Linux 3.14.13-c9
+44 error command "/home/ubuntu/.nvm/v0.10.35/bin/node" "/home/ubuntu/.nvm/v0.10.35/bin/npm" "publish"
+45 error cwd /home/ubuntu/workspace/nsloader
+46 error node -v v0.10.35
+47 error npm -v 1.4.28
+48 verbose exit [ 1, true ]
