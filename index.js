@@ -61,10 +61,7 @@ function nsloaderFindNamespace(ns) {
     len = nsp.length;
     for (i = 0; i < len; i++) {
       newNs = nsp.join('/');
-      if (nsloaderRegisterdNamespaces[newNs] !== undefined) {
-        found = newNs;
-        break;
-      } else if (nsloaderRegisterdNamespaces[newNs + '/*'] !== undefined) {
+      if (nsloaderRegisterdNamespaces[newNs + '/*'] !== undefined) {
         found = newNs + '/*';
         break;
       }
